@@ -13,13 +13,13 @@ const DisplayPhone = phone => {
     phoneContainer.textContent = " "
     // if phone.lenth > 12 than show this sell all hidden btn
     const showAllContainer = document.getElementById('showAllContainer')
-    if(phone.length > 12){
+    if (phone.length > 12) {
         showAllContainer.classList.remove('hidden')
-    }else{
+    } else {
         showAllContainer.classList.add("hidden")
     }
     // display first 12
-    phone = phone.slice(0,12)
+    phone = phone.slice(0, 12)
     phone.forEach(phone => {
         console.log(phone);
         // step-2 Create a div
@@ -41,6 +41,8 @@ const DisplayPhone = phone => {
         // step- 4 appendChild
         phoneContainer.appendChild(phoneCard)
     });
+    // hide loading spiner
+    toggleSpinner(false)
 
 }
 const btnHandler = () => {
@@ -51,9 +53,19 @@ const btnHandler = () => {
 }
 
 const btnHandler2 = () => {
+    toggleSpinner(true)
     const serchField = document.getElementById("serchField2")
     const serchText = serchField.value
     loadPhone(serchText)
+}
+// handle search recap
+const toggleSpinner = (isLoading) => {
+    const loadingSpiner = document.getElementById('loadingSpinar')
+    if (isLoading) {
+        loadingSpiner.classList.remove("hidden")
+    }else{
+        loadingSpiner.classList.add("hidden")
+    }
 }
 
 // loadPhone()
